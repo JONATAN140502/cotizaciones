@@ -65,7 +65,7 @@ class ComprasModel extends Query
         }
         return $res;
     }
-    public function registraCompra(int $id_pr, int $id_user, string $total, string $fecha, string $hora, int $serie)
+    public function registraCompra(int  $id_user, int $id_pr , string $total, string $fecha, string $hora, int $serie)
     {
         $sql = "INSERT INTO compras (id_proveedor,id_usuario, total, fecha, hora, serie) VALUES (?,?,?,?,?,?)";
         $datos = array($id_pr, $id_user, $total, $fecha, $hora, $serie);

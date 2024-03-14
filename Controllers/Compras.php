@@ -4,6 +4,7 @@ use Luecano\NumeroALetras\NumeroALetras;
 
 class Compras extends Controller
 {
+    
     private $id_usuario;
     public function __construct()
     {
@@ -42,7 +43,7 @@ class Compras extends Controller
         die();
     }
     public function agregarCompra($id_producto)
-    {
+    { 
         $id = strClean($id_producto);
         $datos = $this->model->getProducto($id);
         $id_usuario = $_SESSION['id_usuario'];
@@ -111,9 +112,9 @@ class Compras extends Controller
         die();
     }
     public function registrarCompra()
-    {
-        if (isset($_POST['id_pr'])) {
-            $id_pr = (!empty($_POST['id_pr'])) ? strClean($_POST['id_pr']) : 1;
+    {   date_default_timezone_set('America/Lima');
+        if (isset($_POST['id_pr'])){
+            $id_pr =$_POST['id_pr'];
             $fecha = date('Y-m-d');
             $hora = date('H:i:s');
             $id_usuario = $_SESSION['id_usuario'];
@@ -133,7 +134,7 @@ class Compras extends Controller
                 }
                 $vaciar = $this->model->vaciarDetalle('detalle', $id_usuario);
                 if ($vaciar == 'ok') {
-                    $msg = array('msg' => 'Compra generada', 'id' => $data, 'icono' => 'success');
+                    $msg = array('msg' => 'Compra generada', 'id' => $data, 'icono' => 'success', 'proveedor'=>$id_pr);
                 }
             } else {
                 $msg = array('msg' => 'Error al realizar la compra', 'icono' => 'error');

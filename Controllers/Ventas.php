@@ -96,7 +96,7 @@ class Ventas extends Controller
         die();
     }
     public function registrarVenta()
-    {
+    {   date_default_timezone_set('America/Lima');
         if (isset($_POST['id']) && isset($_POST['metodo'])) {
             $id_cliente = (!empty($_POST['id'])) ? strClean($_POST['id']) : 1;
             $verificar = $this->model->verificarCaja($this->id_usuario);
